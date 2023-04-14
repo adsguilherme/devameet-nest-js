@@ -29,4 +29,21 @@ export class UserService {
     }
     return false;
   }
+
+  // eslint-disable-next-line prettier/prettier
+  async getUserByLoginPassword(email: string, password: string) : Promise<UserDocument | null>{ // Promisse que volta UserDocument ou nulo 
+    const user = (await this.userModel.findOne({ email })) as UserDocument;
+
+    if (user) {
+      // eslint-disable-next-line prettier/prettier
+      const bytes = CryptoJS.AES.decrypt(user.password, process.env.USER_CYPHER_SECRET_KEY,); // Aqui está devolvendo a senha descriptografada, porém ela ainda está em bytes. 
+      const savedPassword = bytes.toString(CryptoJS.enc.Utf8);
+
+      // Se a senha do usuário que foi passada no payload é igual com a senha que está salva no banco, devolve o usuário.
+      if (password === savedPassword) {
+        return user;
+      }
+    }
+    return null;
+  }
 }

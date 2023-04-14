@@ -18,7 +18,6 @@ export class AuthController {
 
   @Post('register')
   @HttpCode(HttpStatus.OK)
-  // Não ficou muito claro aqui esse decorator e o dto
   register(@Body() dto: RegisterDto) {
     return this.authService.register(dto);
   }
