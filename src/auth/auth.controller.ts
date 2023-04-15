@@ -6,9 +6,9 @@ import { IsPublic } from './decorators/ispublic.decorator';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
   // O que significa esse {} no final ?
   // De onde surgiu esse private readonly ?
+  constructor(private readonly authService: AuthService) {}
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
