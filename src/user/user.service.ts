@@ -46,4 +46,9 @@ export class UserService {
     }
     return null;
   }
+
+  // Criando serviço para trazer usuário por id
+  async getUserById(id: string) {
+    return await this.userModel.findById(id);
+  }
 }
