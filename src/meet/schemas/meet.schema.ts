@@ -6,7 +6,7 @@ import { User } from 'src/user/schemas/user.schema';
 export type MeetDocument = HydratedDocument<Meet>;
 
 @Schema()
-// Schema.Types.ObjectId todos são types do mongoose.
+// Schema.Types.ObjectId todos esses 3 são types do mongoose.
 // Criada referência (ref) entre o meet e o usuário, para que eles tenham o dado igual.
 export class Meet {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
